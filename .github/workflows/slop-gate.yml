@@ -1,0 +1,16 @@
+name: slop-gate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  slop:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: maxor-tech/slopgrade-ci@v0.6.0
